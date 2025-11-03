@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Pulse Animation - Demo</title>
+    <link rel="stylesheet" href="button-pulse.css">
+    <style>
+        /* Базовые стили для демонстрации */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .demo-container {
+            background: white;
+            border-radius: 1rem;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .demo-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .demo-section h2 {
+            color: #444;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Базовые стили для кнопок */
+        button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        /* Разные варианты кнопок */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+            color: white;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #e91e63;
+        }
+
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Button Pulse Animation</h1>
+        <p class="subtitle">Демонстрация CSS pulse эффекта для кнопок</p>
+
+        <!-- Базовая демонстрация -->
+        <div class="demo-section">
+            <h2>Базовый pulse эффект</h2>
+            <div class="button-grid">
+                <button class="button-pulse btn-primary">Primary Button</button>
+                <button class="button-pulse btn-success">Success Button</button>
+                <button class="button-pulse btn-danger">Danger Button</button>
+            </div>
+            <p class="description">
+                Добавьте класс <code>.button-pulse</code> к любой кнопке для применения анимации.
+                Эффект работает автоматически и повторяется бесконечно.
+            </p>
+        </div>
+
+        <!-- Разные варианты -->
+        <div class="demo-section">
+            <h2>Различные стили кнопок</h2>
+            <div class="button-grid">
+                <button class="button-pulse btn-warning">Warning</button>
+                <button class="button-pulse btn-info">Info</button>
+                <button class="button-pulse btn-outline">Outline</button>
+            </div>
+            <p class="description">
+                Pulse анимация работает с любыми стилями кнопок - градиентами, плоскими цветами, outline и т.д.
+            </p>
+        </div>
+
+        <!-- Кнопка без анимации для сравнения -->
+        <div class="demo-section">
+            <h2>Сравнение с обычной кнопкой</h2>
+            <div class="button-grid">
+                <button class="btn-primary">Без анимации</button>
+                <button class="button-pulse btn-primary">С pulse анимацией</button>
+            </div>
+            <p class="description">
+                Сравните поведение кнопки без анимации и с pulse эффектом.
+            </p>
+        </div>
+
+        <!-- Код для использования -->
+        <div class="demo-section">
+            <h2>Как использовать</h2>
+            <p class="description">
+                <strong>Шаг 1:</strong> Подключите CSS файл в <code>&lt;head&gt;</code>:<br>
+                <code>&lt;link rel="stylesheet" href="button-pulse.css"&gt;</code>
+            </p>
+            <p class="description" style="margin-top: 1rem;">
+                <strong>Шаг 2:</strong> Добавьте класс к кнопке:<br>
+                <code>&lt;button class="button-pulse"&gt;Click Me&lt;/button&gt;</code>
+            </p>
+            <p class="description" style="margin-top: 1rem;">
+                <strong>Accessibility:</strong> Анимация автоматически отключается для пользователей с
+                <code>prefers-reduced-motion</code> настройкой в системе.
+            </p>
+        </div>
+
+        <div class="footer">
+            Created by UI/UX Enhancement Agent | AI Agent Factory | 2025
+        </div>
+    </div>
+</body>
+</html>

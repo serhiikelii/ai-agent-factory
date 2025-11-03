@@ -1,0 +1,124 @@
+/**
+ * Button Pulse Animation
+ *
+ * Простая CSS анимация pulse эффекта для кнопок.
+ * Использует scale и opacity для создания визуального "пульсирующего" эффекта.
+ *
+ * ИСПОЛЬЗОВАНИЕ:
+ * - Добавьте класс .button-pulse к любой кнопке
+ * - Анимация запускается автоматически и повторяется бесконечно
+ *
+ * ПРИМЕР:
+ * <button class="button-pulse">Click Me</button>
+ *
+ * ПРОИЗВОДИТЕЛЬНОСТЬ:
+ * - Использует transform и opacity (GPU-ускоренные свойства)
+ * - Не вызывает reflow/repaint
+ * - Оптимизирована для плавной анимации 60fps
+ *
+ * ACCESSIBILITY:
+ * - Уважает prefers-reduced-motion для пользователей с чувствительностью к движению
+ */
+
+/* Основной класс для применения pulse анимации */
+.button-pulse {
+  /* Запуск анимации pulse с параметрами:
+     - pulse-animation: название keyframes
+     - 2s: длительность одного цикла (2 секунды)
+     - ease-in-out: плавное начало и окончание
+     - infinite: бесконечное повторение
+  */
+  animation: pulse-animation 2s ease-in-out infinite;
+
+  /* Улучшает производительность анимации через GPU-ускорение */
+  will-change: transform, opacity;
+
+  /* Сглаживание краев для более качественного рендеринга */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Определение keyframes для pulse анимации */
+@keyframes pulse-animation {
+  /* Начальное состояние (0%) и конечное (100%) - нормальный размер */
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  /* Середина анимации (50%) - увеличение на 5% и небольшое снижение прозрачности */
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* ========================================
+   ВАРИАЦИИ СКОРОСТИ АНИМАЦИИ
+   ======================================== */
+
+/* Быстрая pulse анимация (1 секунда) */
+.button-pulse-fast {
+  /* Быстрый pulse - подходит для срочных действий, уведомлений */
+  animation: pulse-animation 1s ease-in-out infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Медленная pulse анимация (3 секунды) */
+.button-pulse-slow {
+  /* Медленный pulse - подходит для спокойных UI, фоновых элементов */
+  animation: pulse-animation 3s ease-in-out infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility: Отключить анимацию для пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .button-pulse,
+  .button-pulse-fast,
+  .button-pulse-slow {
+    /* Убираем анимацию полностью */
+    animation: none;
+
+    /* Отключаем will-change для экономии ресурсов */
+    will-change: auto;
+  }
+
+  /* Убираем определение keyframes (не обязательно, но для полноты) */
+  @keyframes pulse-animation {
+    0%, 100% {
+      transform: none;
+      opacity: 1;
+    }
+  }
+}
+
+/*
+ * ВАРИАНТЫ ИСПОЛЬЗОВАНИЯ:
+ *
+ * 1. Базовая pulse анимация (2 секунды):
+ *    <button class="button-pulse">Click Me</button>
+ *
+ * 2. Быстрая pulse анимация (1 секунда):
+ *    <button class="button-pulse-fast">Urgent Action</button>
+ *
+ * 3. Медленная pulse анимация (3 секунды):
+ *    <button class="button-pulse-slow">Background Element</button>
+ *
+ * 4. С Tailwind CSS:
+ *    <button class="button-pulse bg-blue-500 text-white px-4 py-2 rounded">
+ *      Pulsing Button
+ *    </button>
+ *
+ * 5. Динамическое добавление через JavaScript:
+ *    const button = document.querySelector('.my-button');
+ *    button.classList.add('button-pulse-fast');
+ *
+ * КОГДА ИСПОЛЬЗОВАТЬ КАКУЮ СКОРОСТЬ:
+ * - .button-pulse (2s) - стандартная скорость для большинства UI элементов
+ * - .button-pulse-fast (1s) - срочные действия, уведомления, call-to-action кнопки
+ * - .button-pulse-slow (3s) - спокойные UI, декоративные элементы, фоновые индикаторы
+ */
